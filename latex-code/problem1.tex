@@ -4,12 +4,35 @@ You can answer Problem 1 in this file/section. One subsection for each part of t
 \subsection{}
 The first order Nomoto model is a simple vessel model that we can use for this problem. The transfer function from rudder angle $\delta$ to heading rate $r = \dot \psi$ is given by equation (7.28) in \cite{Fossen2011} and is
 \begin{equation}\begin{aligned}
+\label{eq:nomoto_tf}
 \frac{r}{\delta}(s) = \frac{K}{Ts + 1}
 \end{aligned}\end{equation}
 This corresponds to the time-domain representation
 \begin{equation}\begin{aligned}
 T \ddot \psi + \dot \psi = K \delta.
 \end{aligned}\end{equation}
+
+\subsection{}
+In order to find the Nomoto parameters $T$ and $K$, we look at the step response of the system when excited by a reference $\delta_c = -10^{-2}$. We choose $\delta_c$ small as to not bring out non-linear dynamics that the first order Nomoto model cannot represent. Solving \eqref{eq:nomoto_tf} for the step response $r(t)$ we find
+\begin{equation}\begin{aligned}
+r(t) = \delta_c KT(1 - e^{-\frac{t}{T}}).
+\end{aligned}\end{equation}
+From classic control theory, we know that when $t = T$, $1 - e^{-\frac{t}{T}} = 1 - e^{-1} \approx 0.63$. In other words, the step response will hit $63\%$ of the final heading rate value $r_{\infty}$ at $t = T$. From \figref{fig:nomoto_reading} we see that this is at approximately $t = 1600s$. Furthermore, as time goes to infinity, the exponential term goes to zero, and so $r$ approaches $\delta_c K T$. We read $r_\infty \approx 2.4 \cdot 10^{-3}$ from \figref{fig:nomoto_reading} and can then find $K$ as
+\begin{equation}\begin{aligned}
+K = \frac{r_{\infty}}{\delta_c T} \approx \frac{2.4 \cdot 10^{-3}}{10^{-2} \cdot 1.6 \cdot 10^{3}} \approx 1.5 \cdot 10^{-4}.
+\end{aligned}\end{equation}
+In total define the parameters
+\begin{equation}\begin{aligned}
+T = 1.6 \cdot 10^3, \quad \text{and} \quad K = 1.5 \cdot 10^{-4}.
+\end{aligned}\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{nomoto-reading}
+\caption{Nomoto model parameter reading}
+\label{fig:nomoto_reading}
+\end{figure}
+
 
 \begin{figure}[ht]
 	\centering
@@ -37,5 +60,7 @@ T \ddot \psi + \dot \psi = K \delta.
 	\end{subfigure}
 	\caption{Caption for all figures}\label{fig:2}
 \end{figure}
+
+
 
 
