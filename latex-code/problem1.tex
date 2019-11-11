@@ -19,11 +19,11 @@ r(t) = \delta_c KT(1 - e^{-\frac{t}{T}}).
 \end{aligned}\end{equation}
 From classic control theory, we know that when $t = T$, $1 - e^{-\frac{t}{T}} = 1 - e^{-1} \approx 0.63$. In other words, the step response will hit $63\%$ of the final heading rate value $r_{\infty}$ at $t = T$. From \figref{fig:nomoto_reading} we see that this is at approximately $t = 1600s$. Furthermore, as time goes to infinity, the exponential term goes to zero, and so $r$ approaches $\delta_c K T$. We read $r_\infty \approx 2.4 \cdot 10^{-3}$ from \figref{fig:nomoto_reading} and can then find $K$ as
 \begin{equation}\begin{aligned}
-K = \frac{r_{\infty}}{\delta_c T} \approx \frac{2.4 \cdot 10^{-3}}{10^{-2} \cdot 1.6 \cdot 10^{3}} \approx 1.5 \cdot 10^{-4}.
+K = \frac{r_{\infty}}{\delta_c T} \approx \frac{2.4 \cdot 10^{-3}}{-10^{-2} \cdot 1.6 \cdot 10^{3}} \approx -1.5 \cdot 10^{-4}.
 \end{aligned}\end{equation}
-In total define the parameters
+In total, we define the parameters
 \begin{equation}\begin{aligned}
-T = 1.6 \cdot 10^3, \quad \text{and} \quad K = 1.5 \cdot 10^{-4}.
+T = 1.6 \cdot 10^3, \quad \text{and} \quad K = -1.5 \cdot 10^{-4}.
 \end{aligned}\end{equation}
 
 \begin{figure}[H]
