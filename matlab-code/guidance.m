@@ -1,5 +1,5 @@
-function [U_d, chi_d] = guidance(x, y, waypoints, ...
-    numeric_threshold, distance_threshold)
+function [U_d, chi_d] = guidance(x, y, waypoints, numeric_threshold, ...
+    distance_threshold)
 %GUIDANCE Summary of this function goes here
 %   Detailed explanation goes here
 persistent k
@@ -7,8 +7,9 @@ if isempty(k)
     k = 1; 
 end
 
-x_wp = waypoints(1, :); 
-y_wp = waypoints(2, :); 
+x_wp = waypoints(1, :);
+size(waypoints)
+y_wp = waypoints(2, :);
 
 delta_x = x_wp(k + 1) - x_wp(k); 
 delta_y = y_wp(k + 1) - y_wp(k); 
