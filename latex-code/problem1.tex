@@ -37,7 +37,7 @@ We define a PD controller to control the heading $\psi$ from the rudder, i.e. we
 \begin{equation}\begin{aligned}
 \delta_c = -K_p (\psi_d - \psi) - K_d \psi_dot.
 \end{aligned}\end{equation}
-We wish to use the Nomoto model to find good values for $K_p$ and $K_d$. Using the model parameters, we define
+We wish to use the first order Nomoto model to find good values for $K_p$ and $K_d$. Using the model parameters, we define
 \begin{equation}\begin{aligned}
 T' = T \frac{U}{L_{pp}}, \quad K' = K \frac{L_{pp}}{U},
 \end{aligned}\end{equation}
@@ -91,4 +91,17 @@ To simplify further analysis, we hope to be able to fit a first order model to t
 \end{aligned}\end{equation}
 where $u$ is surge speed and $n_c$ is the commanded shaft speed.
 
+
+\subsection{}
+We apply the same method for finding $T_u$ and $K_u$ as we did for finding the Nomoto model parameters, that is, we apply a step $n_{c,\text{step}}$ to the system and record the time constant as the time where the responds hits the $63 \%$ mark. We then find $K_u$ as $K_u = \frac{u_{\infty}}{n_{c,\text{step}}}$. For $n_{c,\text{step}}$ we obtain
+\begin{equation}\begin{aligned}
+T_u = 790s, \quad \text{and} \quad K_u = 0.8157.
+\end{aligned}\end{equation}
+A comparison of the ship response and the model response given this step input is shown in \figref{fig:surge_boi}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{surge_boi}
+\caption{Ship surge dynamics vs first order model}
+\label{fig:surge_boi}
+\end{figure}
 
