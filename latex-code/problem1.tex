@@ -93,15 +93,30 @@ where $u$ is surge speed and $n_c$ is the commanded shaft speed.
 
 
 \subsection{}
-We apply the same method for finding $T_u$ and $K_u$ as we did for finding the Nomoto model parameters, that is, we apply a step $n_{c,\text{step}}$ to the system and record the time constant as the time where the responds hits the $63 \%$ mark. We then find $K_u$ as $K_u = \frac{u_{\infty}}{n_{c,\text{step}}}$. For $n_{c,\text{step}}$ we obtain
+We apply the same method for finding $T_u$ and $K_u$ as we did for finding the Nomoto model parameters, that is, we apply a step $n_{c,\text{step}}$ to the system and record the time constant as the time where the responds hits the $63 \%$ mark. We then find $K_u$ as $K_u = \frac{u_{\infty}}{n_{c,\text{step}}}$. For $n_{c,\text{step}} = 4$ we obtain
 \begin{equation}\begin{aligned}
 T_u = 790s, \quad \text{and} \quad K_u = 0.8157.
 \end{aligned}\end{equation}
-A comparison of the ship response and the model response given this step input is shown in \figref{fig:surge_boi}.
+A comparison of the ship response and the model response given this step input is shown in \figref{fig:surge_boi}. As we can see, the non-linear overshoot of the ship is much less significant for the surge than for the heading, and so the deviation is less severe in this case.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{surge_boi}
 \caption{Ship surge dynamics vs first order model}
 \label{fig:surge_boi}
 \end{figure}
+
+\subsection{}
+To make a controller that can compensate for the current, we choose a PI controller, i.e. a controller of the form
+\begin{equation}\begin{aligned}
+n_c(t) = K_p \tilde u + K_i \int^{t}_{0} \tilde u,
+\end{aligned}\end{equation}
+where $\tilde u = u_d - u$.
+For the controller parameters, we chose values
+\begin{equation}\begin{aligned}
+K_p = n_{c, \text{max}} = \frac{85 \cdot 2 \cdot \pi}{60}, \quad \text{and} \quad K_i = \frac{K_p}{T_u}.
+\end{aligned}\end{equation}
+The integral term is implemented by continuously summing the error term $\tilde u$ for each timestep, however since $n_c$ is saturated to be below $n_{c, \text{max}} = \frac{85 \cdot 2 \cdot \pi}{60}$, care must be taken to prevent integrator windup, i.e. prevent the integrator from accumulating a disproportionately large value while the controller is saturated. The simplest solution is to simply stop the summation when the controller is saturated, which is what we have implemented.
+
+As for limitations, this controller, unlike the heading controller, does not lose controllability in any situation. Because of the integrator, it can follow constant references without producing static offset. In addition, the integrator will integrate slowly varying environmental effects such as current.
+
 
