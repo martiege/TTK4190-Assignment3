@@ -35,7 +35,7 @@ T = 140, \quad \text{and} \quad K = 1.06 \cdot 10^{-4}.
 \subsection{}
 We define a PD controller to control the heading $\psi$ from the rudder, i.e. we want the commanded rudder to be
 \begin{equation}\begin{aligned}
-\delta_c = -K_p (\psi_d - \psi) - K_d \psi_dot.
+\delta_c = -K_p (\psi_d - \psi) - K_d \dot \psi.
 \end{aligned}\end{equation}
 We wish to use the first order Nomoto model to find good values for $K_p$ and $K_d$. Using the model parameters, we define
 \begin{equation}\begin{aligned}
