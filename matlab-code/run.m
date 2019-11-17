@@ -31,9 +31,9 @@ tstart=0;           % Sim start time
 tstop=10000;        % Sim stop time
 tsamp=10;           % Sampling time for how often states are stored. (NOT ODE solver time step)
                 
-p0=zeros(2,1);      % Initial position (NED)
-v0=[3 0]';       % Initial velocity (body)
-psi0=0;             % Inital yaw angle
+p0=[1000, 700];      % Initial position (NED)
+v0=[6.63 0]';       % Initial velocity (body)
+psi0=deg2rad(60);             % Inital yaw angle
 r0=0;               % Inital yaw rate
 c=1;                % Current on (1)/off (0)
 
