@@ -50,7 +50,9 @@ With this, we choose the controller parameters
 K_p = (\frac{L_{pp}}{U})^2 \frac{T'}{K'}, \quad \text{and} \quad
 K_d = \frac{2 \xi \omega_n - 1}{K' \frac{U}{L_{pp}}}.
 \end{aligned}\end{equation}
-Since this control input will be input into a physical rudder, we have to saturate $\delta_c$ between the minimum and maximum rudder angles $-\delta_{\text{max}}$ and $\delta_{\text{max}}$. In addition, we could add rate limitation to the input, but we have not implemented this.
+Note how the controller parameters depend on the current state of the system: they vary with the vessel velocity. Moreover, since we divide by the velocity $U$ in these expressions, the control law is clearly not defined for zero velocity. This is expected, since we obviously lose controllability for a velocity-driven heading control system when the velocity is zero.
+
+In addition, since this control input will be input into a physical rudder, we have to saturate $\delta_c$ between the minimum and maximum rudder angles $-\delta_{\text{max}}$ and $\delta_{\text{max}}$. In addition, we could add rate limitation to the input, but we have not implemented this.
 
 \subsection{}
 We implement the controller as a simulink block and drive it with the reference
@@ -59,7 +61,6 @@ We implement the controller as a simulink block and drive it with the reference
 r_d(t) = \dot \psi_d(t).
 \end{aligned}\end{equation}
 This, when simulated with current turned on, results in the heading shown in \figref{fig:heading1_4}. As we can see, we achieve acceptable tracking of the commanded heading. \figref{fig:rudder1_4} shows how the commanded rudder maxes out within the saturation limits. This is however not a problem for the heaidng controller.
-
 
 \begin{figure}[ht]
 	\centering
@@ -82,7 +83,6 @@ This, when simulated with current turned on, results in the heading shown in \fi
 	\end{subfigure}
 	\caption{Heading controller results}\label{fig:2}
 \end{figure}
-
 
 
 
