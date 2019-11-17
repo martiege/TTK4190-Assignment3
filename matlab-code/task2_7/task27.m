@@ -40,5 +40,8 @@ c=1;                % Current on (1)/off (0)
 load('WP.mat'); 
 sim PPMSFartoystyring % The measurements from the simulink model are automatically written to the workspace.
 
-pathplotter(p(:, 1), p(:, 2), psi, tsamp, 20, tstart, tstop, 0, WP); 
-pathplotter(p_t(:, 1), p_t(:, 2), psi_t, tsamp, 20, tstart, tstop, 0, WP); 
+%% MS Fartøystyring – The Chad of Ships
+pathplotter(p(:, 1), p(:, 2), psi, tsamp, 20, tstart, tstop, 1, WP); 
+
+%% Some stupid fishing boat (Plot this to verify simulation is correct)
+pathplotter(p_t(:, 1), p_t(:, 2), psi_t, tsamp, 20, tstart, tstop, 1, WP); 
