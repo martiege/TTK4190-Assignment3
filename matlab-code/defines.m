@@ -13,5 +13,8 @@ T_psi = 140;
 K_psi = r_inf / (-delta_max * T_psi); 
 
 % Speed / surge controller
-K_pu = 
-K_iu = 
+T_u = 790;
+K_u = 0.8157;
+e_max = 1; 
+K_pu = n_max / e_max; 
+K_iu = K_pu / T_u; 

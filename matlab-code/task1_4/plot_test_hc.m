@@ -22,4 +22,4 @@ ylim([-rad2deg(delta_max), rad2deg(delta_max)]);
 legend('delta_c', 'positive saturation limit', 'negative saturation limit');
 xlabel('time [s]'); 
 ylabel('delta_c [degrees]'); 
-title('Delta_c'); 
+title('Commanded rudder'); 

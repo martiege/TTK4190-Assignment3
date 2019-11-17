@@ -1,4 +1,4 @@
-function n_c = speed_controller(u, u_d, K_p, K_i, n_max, Ts)
+function n_c = speed_controller(u, u_d, K_p, K_i, n_max)
 %SPEED_CONTROLLER Summary of this function goes here
 %   Detailed explanation goes here
 persistent e_i
@@ -12,7 +12,7 @@ n_c = K_p * e + K_i * e_i;
 n_c = n_c_norm * n_max; 
 
 if ~saturated
-    e_i = euler2(e, e_i, Ts);
+    e_i = e_i + e; 
 end
 
 end
