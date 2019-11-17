@@ -23,3 +23,4 @@ K_iu = K_pu / T_u;
 
 % Target tracking
 U_t = 3; % Target boat velocity
+track_dist = 2*L_pp;
