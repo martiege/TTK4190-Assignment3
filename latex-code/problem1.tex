@@ -13,25 +13,27 @@ T \ddot \psi + \dot \psi = K \delta.
 \end{aligned}\end{equation}
 
 \subsection{}
-In order to find the Nomoto parameters $T$ and $K$, we look at the step response of the system when excited by a reference $\delta_c = -10^{-2}$. We choose $\delta_c$ small as to not bring out non-linear dynamics that the first order Nomoto model cannot represent. Solving \eqref{eq:nomoto_tf} for the step response $r(t)$ we find
+In order to find the Nomoto parameters $T$ and $K$, we look at the step response of the system when excited by a reference $\delta_{\text{max}} = -25^{\circ}$, i.e. the maxiumum allowed rudder angle. Solving \eqref{eq:nomoto_tf} for the step response $r(t)$ we find
 \begin{equation}\begin{aligned}
-r(t) = \delta_c KT(1 - e^{-\frac{t}{T}}).
+r(t) = \delta_{\text{max}} KT(1 - e^{-\frac{t}{T}}).
 \end{aligned}\end{equation}
-From classic control theory, we know that when $t = T$, $1 - e^{-\frac{t}{T}} = 1 - e^{-1} \approx 0.63$. In other words, the step response will hit $63\%$ of the final heading rate value $r_{\infty}$ at $t = T$. From \figref{fig:nomoto_reading} we see that this is at approximately $t = 1600s$. Furthermore, as time goes to infinity, the exponential term goes to zero, and so $r$ approaches $\delta_c K T$. We read $r_\infty \approx 2.4 \cdot 10^{-3}$ from \figref{fig:nomoto_reading} and can then find $K$ as
+From classic control theory, we know that when $t = T$, $1 - e^{-\frac{t}{T}} = 1 - e^{-1} \approx 0.63$. In other words, the step response will hit $63\%$ of the final heading rate value $r_{\infty}$ at $t = T$. From \figref{fig:nomoto_reading} we see that this is at approximately $t = 140s$. Furthermore, as time goes to infinity, the exponential term goes to zero, and so $r$ approaches $\delta_{\text{max}} K T$. We read $r_\infty \approx 6.5 \cdot 10^{-3}$ from \figref{fig:nomoto_reading} and can then find $K$ as
 \begin{equation}\begin{aligned}
-K = \frac{r_{\infty}}{\delta_c T} \approx \frac{2.4 \cdot 10^{-3}}{-10^{-2} \cdot 1.6 \cdot 10^{3}} \approx -1.5 \cdot 10^{-4}.
+K = \frac{r_{\infty}}{\delta_{\text{max}} T} \approx \frac{6.5 \cdot 10^{-3}}{25^{\circ} \cdot 140} \approx 1.06 \cdot 10^{-4}.
 \end{aligned}\end{equation}
 In total, we define the parameters
 \begin{equation}\begin{aligned}
-T = 1.6 \cdot 10^3, \quad \text{and} \quad K = -1.5 \cdot 10^{-4}.
+T = 140, \quad \text{and} \quad K = 1.06 \cdot 10^{-4}.
 \end{aligned}\end{equation}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{nomoto-reading}
+\includegraphics[width=0.7\textwidth]{nomoto-reading-improved}
 \caption{Nomoto model parameter reading}
 \label{fig:nomoto_reading}
 \end{figure}
+
+
 
 
 \begin{figure}[ht]
