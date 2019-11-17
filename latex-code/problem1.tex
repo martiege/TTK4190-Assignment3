@@ -1,6 +1,4 @@
 \section{Autopilot Design}
-You can answer Problem 1 in this file/section. One subsection for each part of the problem might be a good solution.
-
 \subsection{}
 The first order Nomoto model is a simple vessel model that we can use for this problem. The transfer function from rudder angle $\delta$ to heading rate $r = \dot \psi$ is given by equation (7.28) in \cite{Fossen2011} and is
 \begin{equation}\begin{aligned}
@@ -33,6 +31,26 @@ T = 140, \quad \text{and} \quad K = 1.06 \cdot 10^{-4}.
 \label{fig:nomoto_reading}
 \end{figure}
 
+
+\subsection{}
+We define a PD controller to control the heading $\psi$ from the rudder, i.e. we want the commanded rudder to be
+\begin{equation}\begin{aligned}
+\delta_c = -K_p (\psi_d - \psi) - K_d \psi_dot.
+\end{aligned}\end{equation}
+We wish to use the Nomoto model to find good values for $K_p$ and $K_d$. Using the model parameters, we define
+\begin{equation}\begin{aligned}
+T' = T \frac{U}{L_{pp}}, \quad K' = K \frac{L_{pp}}{U},
+\end{aligned}\end{equation}
+where $U = \sqrt{u^2 + v^2}$ is the ship velocity and $L_{pp}$ is the ship length. We also define
+\begin{equation}\begin{aligned}
+\omega_n = \sqrt{(\frac{u}{L_{pp}}) (\frac{1}{T})}, \quad \text{and} \quad \xi = 1.
+\end{aligned}\end{equation}
+With this, we choose the controller parameters
+\begin{equation}\begin{aligned}
+K_p = (\frac{L_{pp}}{U})^2 \frac{T'}{K'}, \quad \text{and} \quad
+K_d = \frac{2 \xi \omega_n - 1}{K' \frac{U}{L_{pp}}}.
+\end{aligned}\end{equation}
+Since this control input will be input into a physical rudder, we have to saturate $\delta_c$ between the minimum and maximum rudder angles $-\delta_{\text{max}}$ and $\delta_{\text{max}}$. In addition, we could add rate limitation to the input, but we have not implemented this.
 
 
 
