@@ -19,4 +19,7 @@ T_u = 790;
 K_u = 0.8157;
 e_max = 1; 
 K_pu = n_max / e_max; 
-K_iu = K_pu / T_u; 
+K_iu = K_pu / T_u;
+
+% Target tracking
+U_t = 3; % Target boat velocity
