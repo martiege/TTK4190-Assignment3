@@ -120,3 +120,33 @@ The integral term is implemented by continuously summing the error term $\tilde 
 As for limitations, this controller, unlike the heading controller, does not lose controllability in any situation. Because of the integrator, it can follow constant references without producing static offset. In addition, the integrator will integrate slowly varying environmental effects such as current.
 
 
+\subsection{}
+We simulate the system with a step response from $u_d = 3$ to $u_d = 7$ at $t=1250s$. This results in the surge speed response shown in \figref{fig:heading1_7}. As we can see, the surge is affected by current, but the controller is able to compensate adequately. \figref{fig:rudder_shaft1_7} shows how $n_c$ does not go over the saturation limit. \figref{fig:surge_v_model1_7} shows the ship compared to the reference model, and clearly their responses are similar, but the first order model is a bit slower. We also note the small static offset. This could potentially be reduced by increasing the integral gain of the controller.
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{heading1_7}
+		\caption{Heading}
+		\label{fig:heading1_7}
+	\end{subfigure}%
+	~
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{rudder_shaft1_7}
+		\caption{Commanded rudder and shaft speed}
+		\label{fig:rudder_shaft1_7}
+	\end{subfigure}%
+
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{surge1_7}
+		\caption{Surge speed}
+		\label{fig:surge1_7}
+	\end{subfigure}%
+        ~
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{surge_v_model1_7}
+		\caption{Ship vs model surge}
+		\label{fig:surge_v_model1_7}
+	\end{subfigure}
+	\caption{Surge speed controller results}\label{fig:1_7}
+\end{figure}
