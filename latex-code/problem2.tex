@@ -16,10 +16,9 @@ See \figref{fig:path_2_2} for the path of the vessel, and \figref{fig:cross_trac
         ~
 	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{cross_track_error2_2}
-		\caption{Rudder with saturation}
+		\caption{Cross-track error}
 		\label{fig:cross_track_error2_2}
 	\end{subfigure}
-	\caption{Cross-track error}
 	\label{fig:task2_2}
 \end{figure}
 
@@ -61,10 +60,9 @@ The oscillations in the system were undesirable, but we couldn't really find a w
         ~
 	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{cross_track_error2_6}
-		\caption{Rudder with saturation}
+		\caption{Cross-track error}
 		\label{fig:cross_track_error2_6}
 	\end{subfigure}
-	\caption{Cross-track error}
 	\label{fig:task2_6}
 \end{figure}
 
@@ -77,5 +75,26 @@ The oscillations in the system were undesirable, but we couldn't really find a w
 
 \section*{Problem 2.3 - Target Tracking}
 \subsection*{Problem 2.7}
-For this task we implemented the pure-pursuit target-tracking system. 
+For this task we implemented the pure-pursuit target-tracking system. The distance to target is set to two times the boat length. 
 
+\begin{figure}[ht]
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{path_2_7}
+		\caption{Path of vessel}
+		\label{fig:path_2_6}
+	\end{subfigure}%
+        ~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{distance_to_target2_7}
+		\caption{Absolute distance to target}
+		\label{fig:distance_to_target2_7}
+	\end{subfigure}
+	\label{fig:task2_6}%
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{x_y_distance_to_target2_7}
+		\caption{Distance to target in x and y}
+		\label{fig:x_y_distance_to_target2_7}
+	\end{subfigure}
+	\label{fig:task2_7}
+\end{figure}
