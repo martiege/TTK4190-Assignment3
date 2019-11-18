@@ -7,7 +7,7 @@ L_pp = 304.8;
 delta_max = deg2rad(25); 
 n_max     = (85 * 2 * pi) / 60; 
 numeric_threshold = 0.0001;
-distance_threshold = 2 * L_pp; 
+distance_threshold = 1200; 
 
 % Heading controller
 r_inf = 6.5e-3;
@@ -18,7 +18,7 @@ K_psi = r_inf / (-delta_max * T_psi);
 T_u = 790;
 K_u = 0.8157;
 e_max = 1; 
-K_pu = n_max / e_max; 
+K_pu = K_u * n_max / e_max; 
 K_iu = K_pu / T_u;
 
 % Target tracking

@@ -6,6 +6,10 @@ persistent k
 if isempty(k)
     k = 1; 
 end
+persistent e_i
+if isempty(e_i)
+    e_i = 0; 
+end
 
 x_wp = waypoints(1, :);
 y_wp = waypoints(2, :);
@@ -34,7 +38,7 @@ if (x - x_wp(k + 1))^2 + (y - y_wp(k + 1))^2 < R_squared
     end 
 end
 
-
+e_i = e_i + e; 
 
 % 
 % if abs(delta_x) < numeric_threshold
