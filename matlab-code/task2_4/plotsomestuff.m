@@ -2,7 +2,7 @@
 defines;            % defines for the system
 
 tstart=0;           % Sim start time
-tstop=6500;        % Sim stop time
+tstop=4500;        % Sim stop time
 tsamp=10;           % Sampling time for how often states are stored. (NOT ODE solver time step)
                 
 p0=[1000, 700];      % Initial position (NED)
