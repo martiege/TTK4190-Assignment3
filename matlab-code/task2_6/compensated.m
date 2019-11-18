@@ -1,4 +1,3 @@
-%%
 defines;            % defines for the system
 
 tstart=0;           % Sim start time
@@ -12,16 +11,14 @@ r0=0;               % Inital yaw rate
 c=1;                % Current on (1)/off (0)
 
 load('WP.mat'); 
-sim plotting % The measurements from the simulink model are automatically written to the workspace.
+sim MSFartoystyring_compensated % The measurements from the simulink model are automatically written to the workspace.
 
 pathplotter(p(:, 1), p(:, 2), psi, tsamp, 20, tstart, tstop, 0, WP); 
 
 figure(3); 
-beta_c = % asin(v(:, 2) ./ sqrt(v(:, 1).^2 + v(:, 2).^2)); 
-chi = psi - beta_c; 
-plot(t, rad2deg(chi), t, rad2deg(psi), t, rad2deg(psi_d), t, rad2deg(beta_c)); 
+beta = atan2(v(:, 2), v(:, 1));  % asin(v(:, 2) ./ sqrt(v(:, 1).^2 + v(:, 2).^2)); 
+chi = psi + beta; 
+plot(t, rad2deg(chi), t, rad2deg(psi), t, rad2deg(psi_d), t, rad2deg(beta)); 
 legend('Course chi', 'Heading psi', 'Desired course chi_d', 'Crab angle beta'); 
 xlabel('Degrees'); 
 ylabel('Time'); 
-
-
