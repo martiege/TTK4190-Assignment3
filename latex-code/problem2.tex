@@ -4,17 +4,17 @@ We implement a LOS guidance system using lookahead-based steering. The principle
 
 We ended up choosing the same radius for all waypoints, set to be slightly larger than double the length of the vessel. Furthermore, we also limited delta to be between 0 and R. 
 
-\subsection{Problem 2.2}
-See \figref{fig:path_2_2} for the path of the vessel, and \figref{fig:cross_track_error2_2} for the cross-track error 
+\subsection*{Problem 2.2}
+See \figref{fig:path_2_2} for the path of the vessel, and \figref{fig:cross_track_error2_2} for the cross-track error. Note that the variable for stopping the simulation has been reduced, so that it's easier to see the valid track between the waypoints. 
 
 \begin{figure}[ht]
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{path_2_2}
 		\caption{Path and waypoints}
 		\label{fig:path_2_2}
 	\end{subfigure}%
         ~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{cross_track_error2_2}
 		\caption{Rudder with saturation}
 		\label{fig:cross_track_error2_2}
@@ -23,37 +23,5 @@ See \figref{fig:path_2_2} for the path of the vessel, and \figref{fig:cross_trac
 	\label{fig:task2_2}
 \end{figure}
 
-
-Answer problem 2.1 here. The Greek letters for sideslip, heading and course are $\beta$, $\psi$ and $\chi$, respectively. Equation (10) in the assignment is:
-\begin{equation}
-\label{y_kinematics}
-	\begin{aligned}
-		\dot{x} &= u \cos (\psi) -v \sin (\psi) \\
-		\dot{y} &= u \sin (\psi) + v \cos (\psi)
-	\end{aligned}
-\end{equation} 
-You can refer to equations in the report by using the label and the "eqref" command. Example: equation \eqref{y_kinematics} shows the north and east velocities. 
-
-\subsection*{Problem 2.2}
-Answer Problem 2.2 here...
-
 \subsection*{Problem 2.3}
-Transfer functions can be written as
-\begin{equation}
-	H(s) = \frac{a_n s^n + ... + a_1 s + a_0}{b_m s^m + ... + b_1 s + b_0}
-\end{equation}
-
-The Nomoto model can be written as
-\begin{equation}
-\label{eq:nomoto}
-	\begin{aligned}
-		T \dot{r} + r &= K \delta + b \\
-		\dot{\psi} &= r
-	\end{aligned}
-\end{equation}
-
-\subsection*{Problem 2.4}
-Answer Problem 2.4 here.  References can be placed in the "bibliography.bib" and referred to as \cite{Fossen2011} and \cite{Fjellstad1994857}. The PID-controller is
-\begin{equation}
-	\delta = -k_p y - k_d \dot{y} - k_i \int y
-\end{equation}
+The path-following is not really working as expected, as the 
