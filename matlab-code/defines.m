@@ -7,7 +7,7 @@ L_pp = 304.8;
 delta_max = deg2rad(25); 
 n_max     = (85 * 2 * pi) / 60; 
 numeric_threshold = 0.0001;
-distance_threshold = 1200; 
+distance_threshold = 2 * L_pp; 
 
 % Heading controller
 r_inf = 6.5e-3;
