@@ -24,7 +24,7 @@ e = - (x - x_wp(k)) * sin(alpha) + (y - y_wp(k)) * cos(alpha);
 R_squared = max([R_squared, e^2]); 
 DELTA = sqrt(R_squared - e^2); 
 
-chi_r = atan(-e / DELTA); 
+chi_r = atan(-e / DELTA); % atan2?
 chi_p = alpha; 
 chi_d = chi_p + chi_r; 
 if chi_d < 0
